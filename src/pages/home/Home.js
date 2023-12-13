@@ -79,12 +79,24 @@ const Home = () => {
                 <div className='btn-signup'>Sign up</div>
               </div>
               <div className='home-interview-btns'>
-                <div
-                  className='home-interview-btns-item'
-                  onClick={() => setIsOpen(true)}
-                >
-                  Login
-                </div>
+                {authenticated?.isAuthenticated ? (
+                   <div
+                    className='home-interview-btns-item'
+                    onClick={async () => {
+                      authenticated?.handleSetAuthenticated(false)
+                      await removeCookie(STORAGEKEY.USER_INFO)
+                    }}
+                  >
+                    Logout
+                  </div>
+                ) : (
+                  <div
+                    className='home-interview-btns-item'
+                    onClick={() => setIsOpen(true)}
+                  >
+                    Login
+                  </div>
+                )}
                 <div
                   className='home-interview-btns-item'
                   onClick={handleLaunchApp}
