@@ -1,5 +1,3 @@
-const fetch = require('node-fetch');
-
 export default async (req, res) => {
   try {
     const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
