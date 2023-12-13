@@ -8,7 +8,7 @@ export default async (req, res) => {
     const data = await response.json();
     const { country } = data;
 
-    if (country === 'JP') {
+    if (country === 'VN') {
       return res.status(403).json({ error: 'Access denied. Not available in your region.' });
     }
 
