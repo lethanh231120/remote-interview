@@ -1,14 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import './header.scss'
+import { STORAGEKEY, getCookie } from '../../utils/storage'
+import { Authenticated } from '../../App'
 
 const Header = () => {
+  const authenticated = useContext(Authenticated)
   const [addressWallet, setAddressWallet] = useState()
+  const userInfo = getCookie(STORAGEKEY.USER_INFO)
   const handleConnectPetraWallet = async() => {
     const isPetraInstalled = window.aptos;
     if (isPetraInstalled) {
       try {
         const response = await isPetraInstalled.connect();
-        setAddressWallet(response?.address); 
+        setAddressWallet(response?.address);
       } catch (error) {
         alert("User rejected the request.")
       }
@@ -41,11 +45,11 @@ const Header = () => {
           </>
           : <span>Connect Wallet &#8594;</span>}
         </div>
-        {/* {authenticated?.isAuthenticated ? (
+        {authenticated?.isAuthenticated ? (
           <div style={{ marginLeft: '20px' }}>
             <img src={userInfo?.image} alt='avatar wallet' className='logo-wallet'/>
           </div>
-        ) : ''} */}
+        ) : ''}
       </div>
     </div>
   )

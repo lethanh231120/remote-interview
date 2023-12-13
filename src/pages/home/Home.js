@@ -11,6 +11,7 @@ const Home = () => {
   const navigate = useNavigate()
   const authenticated = useContext(Authenticated)
   const [IsOpen, setIsOpen] = useState(false);
+  const [IsOpenNoti, setIsOpenNoti] = useState(false);
   const responseGoogle = async(response) => {
     try {
       const decodedJwt = parseJwt(response?.credential)
@@ -27,7 +28,6 @@ const Home = () => {
         await setCookie(STORAGEKEY.USER_INFO, userInfo)
         authenticated?.handleSetAuthenticated(true)
         setIsOpen(false)
-        navigate(`../test2`)
       }
     } catch (error) {
       console.log(error)
@@ -36,11 +36,13 @@ const Home = () => {
 
   const errorGoogle = (error) => {
     console.error(error)
-    // openNotification()
   }
 
   function closeModal() {
     setIsOpen(false);
+  }
+  function closeModalNoti() {
+    setIsOpenNoti(false);
   }
 
   const customStyles = {
@@ -54,6 +56,15 @@ const Home = () => {
       width: 'auto'
     },
   };
+
+  const handleLaunchApp = () => {
+    if (authenticated?.isAuthenticated) {
+      navigate('./test2')
+    } else {
+      setIsOpenNoti(true)
+    }
+  }
+
   return (
     <div className='home'>
       <div className='home-interview'>
@@ -74,7 +85,12 @@ const Home = () => {
                 >
                   Login
                 </div>
-                <div className='home-interview-btns-item'>Launch App</div>
+                <div
+                  className='home-interview-btns-item'
+                  onClick={handleLaunchApp}
+                >
+                  Launch App
+                </div>
               </div>
             </div>
           </div>
@@ -120,6 +136,27 @@ const Home = () => {
             onError={errorGoogle}
           />
         </GoogleOAuthProvider>
+      </Modal>
+      <Modal
+        isOpen={IsOpenNoti}
+        onRequestClose={closeModalNoti}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <div style={{ width: '100%', textAlign: 'right', marginBottom: '40px' }}>
+          <p
+            onClick={() => {
+              closeModalNoti();
+              setIsOpen(true)
+            }} 
+            style={{ textAlign: 'right', cursor: 'pointer', margin: '0' }}
+          >
+            &#10060;
+          </p>
+        </div>
+        <div>
+          Bạn phải đăng nhập mới sử dụng được tính năng này.
+        </div>
       </Modal>
     </div>
   )
