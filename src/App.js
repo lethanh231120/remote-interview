@@ -19,27 +19,6 @@ function App() {
     setIsAuthenticated(Boolean(getCookie(STORAGEKEY.USER_INFO)))
   }, [])
 
-  useEffect(() => {
-    console.log(111111)
-    const checkAccess = async () => {
-      try {
-        const response = await fetch('/api/blockJapan');
-        const data = await response.json();
-
-        console.log(response)
-        console.log(data)
-        if (!response.ok) {
-          console.error(data.error);
-          navigate('./block-ip')
-        }
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    };
-
-    checkAccess();
-  }, []);
-
   return (
     <Authenticated.Provider value={stateAuthenticated}>
       <div className="App">
