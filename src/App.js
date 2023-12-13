@@ -20,6 +20,7 @@ function App() {
   }, [])
 
   useEffect(() => {
+    console.log(111111)
     const checkAccess = async () => {
       try {
         const response = await fetch('/api/blockJapan');
