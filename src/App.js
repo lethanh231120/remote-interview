@@ -25,6 +25,8 @@ function App() {
         const response = await fetch('/api/blockJapan');
         const data = await response.json();
 
+        console.log(response)
+        console.log(data)
         if (!response.ok) {
           console.error(data.error);
           navigate('./block-ip')
