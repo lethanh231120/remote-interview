@@ -9,6 +9,7 @@ import UseCases from '../pages/use-cases/UseCases'
 import Header from './header/Header'
 import Test2 from '../pages/test2/Test2'
 import { PrivateRoute } from '../routers'
+import BlockIp from '../pages/block-ip/BlockIp'
 
 const Router = () => {
   return (
@@ -19,6 +20,7 @@ const Router = () => {
               <Route path='/' element={<HomePage />} />
               <Route path='test2' element={<PrivateRoute component={Test2} />} />
               <Route path='products' element={<Products />} />
+              <Route path='block-ip' element={<BlockIp />} />
               <Route path='protocols' element={<Protocols />}/>
               <Route path='tokens' element={<Tokens />} />
               <Route path='use-cases' element={<UseCases />} />

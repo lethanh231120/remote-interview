@@ -167,7 +167,7 @@ const Home = () => {
           </p>
         </div>
         <div>
-          Bạn phải đăng nhập mới sử dụng được tính năng này.
+          You must be logged in to use this feature.
         </div>
       </Modal>
     </div>
