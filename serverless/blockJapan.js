@@ -3,6 +3,7 @@ export default async (req, res) => {
       const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   
       const response = await fetch(`https://ipinfo.io/${ip}/json`);
+      console.log(response)
       const data = await response.json();
       const { country } = data;
   
