@@ -1,24 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import Layout from '../src/layouts'
+import { createContext, useState, useEffect } from 'react';
+import { getCookie, STORAGEKEY } from './utils/storage';
+// import Footer from './layouts/footer/Footer';
+
+export const Authenticated = createContext()
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const stateAuthenticated = {
+    isAuthenticated: isAuthenticated,
+    handleSetAuthenticated: (isAuth) => setIsAuthenticated(isAuth)
+  }
+
+  useEffect(() => {
+    setIsAuthenticated(Boolean(getCookie(STORAGEKEY.USER_INFO)))
+  }, [])
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Authenticated.Provider value={stateAuthenticated}>
+      <div className="App">
+        <Layout/>
+        {/* <Footer/> */}
+      </div>
+    </Authenticated.Provider>
   );
 }
 

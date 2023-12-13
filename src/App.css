@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
 }
 
 .App-logo {
@@ -28,6 +28,15 @@
   color: #61dafb;
 }
 
+.container {
+  max-width: 1200px;
+  margin: 0px auto;
+}
+
+.content{
+  background: radial-gradient(99.58% 264.01% at 2% 3.87%, #8F4791 0%, #D9659C 36.65%, #F7A050 75.64%, #FAA051 88.02%, #CF642D 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+  padding: 90px 15px;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
