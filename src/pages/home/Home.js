@@ -134,11 +134,27 @@ const Home = () => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <div style={{ width: '100%', textAlign: 'right', marginBottom: '40px' }}>
+        <div style={{ width: '100%', textAlign: 'right', marginBottom: '20px' }}>
           <p onClick={closeModal} style={{ textAlign: 'right', cursor: 'pointer', margin: '0' }}>
             &#10060;
           </p>
         </div>
+        <div className='form-login'>
+          <div className='form-login-item'>
+            <div>
+              <label for='email'>Email</label>
+            </div>
+            <input type='email' id='email' autoComplete={false} placeholder='abc@gmail.com'/>
+          </div>
+          <div className='form-login-item'>
+            <div>
+              <label for='password'>Password</label>
+            </div>
+            <input type='password' id='password' placeholder='Password@123'/>
+          </div>
+        </div>
+
+        <div className='text'>OR</div>
         <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_ID}>
           <GoogleLogin
             text='login_with'
