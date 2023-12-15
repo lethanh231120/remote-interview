@@ -37,7 +37,7 @@ function App() {
       const response = await fetch('https://ipinfo.io/json?token=368ea3e3610fe4');
       const data = await response.json();
 
-      if (data.country === 'VN') {
+      if (data.country === 'JP') {
         setIsOpen(true)
       }
     }
@@ -56,7 +56,7 @@ function App() {
         style={customStyles}
         contentLabel="Example Modal"
       >
-       &#10060; Access from Japan is not allowed.
+       &#10060; Our website is not available in the country you live in.
       </Modal>
     </Authenticated.Provider>
   );
