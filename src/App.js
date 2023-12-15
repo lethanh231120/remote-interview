@@ -37,7 +37,7 @@ function App() {
       const response = await fetch('https://ipinfo.io/json?token=368ea3e3610fe4');
       const data = await response.json();
 
-      if (data.country === 'JP') {
+      if (data.country === 'VN') {
         setIsOpen(true)
       }
     }
